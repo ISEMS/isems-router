@@ -58,45 +58,4 @@ Now reboot the device.
 
 After it is up and running, log in to the web interface. In the Admin interface, there is a new section named **Solar-Power**.
 
-Check the settings.
-
-## How to manually set up and install the ISEMS OpenMPPT companion tools to the router
-
-### Requirements:
-
-* ash or bash or compatible root shell
-* stty
-* lua (tested with 5.1.5)
-* uci
-
-## Step one
-
-You are probably going to use the build-in serial port of the router to communicate with the Freifunk-OpenMPPT. If not, you can skip this step. By default, the serial port is used as debug login port, so you have to *disable* the serial port login console of the router in */etc/inittab*
-
-Add the *#*-sign to the line containing *askconsole*. It should finally look like this:
-
-	::sysinit:/etc/init.d/rcS S boot
-	::shutdown:/etc/init.d/rcS K shutdown
-	#::askconsole:/usr/libexec/login.sh
-
-Now reboot or execute the command *init q*
-
-**Note: After this step you will no longer be able to log into Linux via serial console. You can still access the bootloader of the device before Linux starts.**
-
-
-## Step two
-
-* Install **uci**, **lua** and **stty** if they aren't present in the system.
-
-Unfortuntely, there is no ready-to-use **uci** packet for Ubuntu or Debian. This might be the case, if you build a ISEMS solar node with *raspbian*. Instructions on installing *uci* in Debian and Ubuntu are [here](https://wiki.openwrt.org/doc/techref/uci).
-
-* Copy **collect-ISEMS-data.sh** to */usr/bin*
-
-* Copy **freifunk-open-mppt.lua** to the directory */usr/lib/lua*
-
-* Copy **ffopenmppt** to */etc/config/*
-
-* Edit */etc/config/ffopenmppt*
-
-
-	
+Check the settings of battery size, solar module power, power consumption and serial port. If you the serial port is incorrect, you won't see any data. The build in port is likely either **ttyS0** or **ttyATH0**, if you use a USB serial port dongle **ttyUSB0**.
