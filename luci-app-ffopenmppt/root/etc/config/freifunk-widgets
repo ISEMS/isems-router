@@ -1,0 +1,6 @@
+config widget 'ISEMS'
+	option title 'Independent Solar Energy Mesh System'
+	option template 'html'
+	option width '100%'
+	option height '500px'
+	option enabled '1'

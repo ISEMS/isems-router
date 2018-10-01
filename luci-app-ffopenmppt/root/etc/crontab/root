@@ -1,0 +1,4 @@
+0 22 * * * echo "0" > /tmp/battery-gauge-stop.log && tail -n 1 /tmp/ISEMS/ffopenmppt.log | cut -d \; -f 10 > /tmp/battery-gauge-start.log
+0 4 * * *  tail -n 1 /tmp/ISEMS/ffopenmppt.log | cut -d \; -f 10 > /tmp/battery-gauge-stop.log  
+
+
