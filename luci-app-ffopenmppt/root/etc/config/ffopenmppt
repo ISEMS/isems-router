@@ -15,6 +15,6 @@ config ffopenmppt
 	# Serial communication port
 	option serial_port 'ttyS0'
 	
-	# Physical radio interface that keeps on running in power save mode one
-	option powersave_interface ''
+	# Secondary physical radio interface that can be disabled to save power
+	option powersave_interface '1'
 

@@ -212,7 +212,15 @@ for entry in f:lines() do
 maximum_power_consumption = tonumber(entry)
 end
 
-health_estimate = 100
+file = io.open("/tmp/battery_health_estimate", "r")
+
+if file then
+    io.input(file) 
+    health_estimate = io.read("*n")
+    io.close(file)
+else
+    health_estimate = 100
+end
                     
 battery_gauge_begin = collect_char_data("%d+.%d+", 0, "/tmp/battery-gauge-start.log", result)
 battery_gauge_end = collect_char_data("%d+.%d+", 0, "/tmp/battery-gauge-stop.log", result)
@@ -224,11 +232,17 @@ if battery_gauge_start > 100 then battery_gauge_start = 100 end
 
 if (battery_gauge_start > 0 and battery_gauge_stop > 0 and maximum_power_consumption > 0) then health_estimate = (((6 * maximum_power_consumption) / (((battery_gauge_start - battery_gauge_stop) / 100) * rated_batt_capacity)) * 100) end
 
---print (health_estimate)
-
 health_estimate = math.ceil(health_estimate)
 
 if health_estimate > 100 then health_estimate = 100 end
+
+file = io.open("/tmp/battery_health_estimate", "w")
+
+io.output(file)
+
+io.write(health_estimate)
+
+io.close(file)
 
 critical_storage_charge_ratio = 2.5
 
@@ -361,4 +375,7 @@ io.write(
             --"<b>Longitude:</b> ", long, "<br><br>", "\n",
             "<b>Status code:</b> ", statuscode_json, "<br><br>", "\n") 
 
-io.close(file)                   
+io.close(file)
+
+
+

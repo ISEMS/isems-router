@@ -58,4 +58,4 @@ Now reboot the device.
 
 After it is up and running, log in to the web interface. In the Admin interface, there is a new section named **Solar-Power**.
 
-Check the settings of battery size, solar module power, power consumption and serial port. If you the serial port is incorrect, you won't see any data. The build in port is likely either **ttyS0** or **ttyATH0**, if you use a USB serial port dongle **ttyUSB0**.
+Check the settings of battery size, solar module power, power consumption and serial port. If the serial port is incorrect, you won't see any data. The build-in serial port is likely either named **ttyS0** or **ttyATH0**, if you use a USB serial port dongle **ttyUSB0**.
