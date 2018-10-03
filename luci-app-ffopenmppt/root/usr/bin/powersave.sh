@@ -108,8 +108,7 @@ do    	 echo "powersave mode 5 active" > /tmp/powersave
          if [ `date +%H` -eq 00 ]; 
          then wifi down
 	 echo "wifi down" >> /tmp/powersave
-         #sleep 14400
-         sleep 144
+         sleep 14400
 	 /etc/init.d/network restart ; fi
          
          sleep 60;
